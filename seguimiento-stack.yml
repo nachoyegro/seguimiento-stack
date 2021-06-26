@@ -1,0 +1,52 @@
+version: '3.7'
+
+services:
+  backend:
+    image: nachoyegro/seguimiento-academico-backend:v1.1.1
+    ports:
+      - "8000:8001"
+
+  analisis:
+    image: nachoyegro/seguimiento-academico-analisis:v1.1.3
+    ports:
+      - "5000:5000"
+    depends_on:
+      - memcached
+      - backend
+
+  front:
+    image: nachoyegro/seguimiento-academico-front:v1.1
+    ports:
+      - "3000:3000"
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    environment:
+      - NODE_ENV=production
+
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=hello_django
+      - POSTGRES_PASSWORD=hello_django
+      - POSTGRES_DB=hello_django_dev
+
+  nginx:
+    image: nachoyegro/seguimiento-academico-nginx:v1.0.1
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/certs:/etc/nginx/certs
+
+  memcached:
+    image: memcached:1.6.9
+    ports:
+      - 11211:11211
+    command: -m 200m -I 50m
+
+volumes:
+  postgres_data:
+

@@ -15,7 +15,7 @@ services:
       - backend
 
   front:
-    image: nachoyegro/seguimiento-academico-front:v1.1
+    image: nachoyegro/seguimiento-academico-front:v1.1.1
     ports:
       - "3000:3000"
     volumes:
@@ -34,7 +34,7 @@ services:
       - POSTGRES_DB=hello_django_dev
 
   nginx:
-    image: nachoyegro/seguimiento-academico-nginx:v1.0.1
+    image: nachoyegro/seguimiento-academico-nginx:v1.1.0
     ports:
       - "80:80"
       - "443:443"

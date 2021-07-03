@@ -34,7 +34,7 @@ services:
       - POSTGRES_DB=hello_django_dev
 
   nginx:
-    image: nachoyegro/seguimiento-academico-nginx:v1.1.0
+    image: nachoyegro/seguimiento-academico-nginx:v1.1.1
     ports:
       - "80:80"
       - "443:443"

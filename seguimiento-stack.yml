@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   backend:
-    image: nachoyegro/seguimiento-academico-backend:v1.1.3
+    image: nachoyegro/seguimiento-academico-backend:v1.1.5
     ports:
       - "8000:8001"
 

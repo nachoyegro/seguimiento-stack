@@ -13,7 +13,7 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d
 
   backend:
-    image: nachoyegro/seguimiento-academico-backend:v1.1.6
+    image: nachoyegro/seguimiento-academico-backend:v1.1.7
     ports:
       - "8000:8001"
     depends_on:
@@ -24,9 +24,11 @@ services:
       - VIRTUAL_PORT=8001
 
   analisis:
-    image: nachoyegro/seguimiento-academico-analisis:v1.1.4
+    image: nachoyegro/seguimiento-academico-analisis:v1.1.6
     ports:
       - "5000:5000"
+    volumes:
+      - ./analisis/data:/code/data
     depends_on:
       - memcached
       - backend

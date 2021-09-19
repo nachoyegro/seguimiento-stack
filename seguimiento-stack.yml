@@ -13,7 +13,7 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d
 
   backend:
-    image: nachoyegro/seguimiento-academico-backend:v1.1.7
+    image: nachoyegro/seguimiento-academico-backend:v1.2.1
     ports:
       - "8000:8001"
     depends_on:
